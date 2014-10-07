@@ -1,12 +1,15 @@
+# read data
 data<-read.table("~/household_power_consumption.txt", header=TRUE,sep=";", colClasses= "character")
+# subset the data
 testdata <- subset(data,Date=="1/2/2007" | Date=="2/2/2007")
-
+#select data
 Sub_metering_1<-as.numeric(as.matrix(testdata$Sub_metering_1))
 Sub_metering_2<-as.numeric(as.matrix(testdata$Sub_metering_2))
 Sub_metering_3<-as.numeric(as.matrix(testdata$Sub_metering_3))
 
 
 png("plot4.png", width=480, height=480)
+# multiple plot
 par(mfrow=c(2,2))
 plot(as.numeric(testdata$Global_active_power),xaxt = "n",type='l',xlab="",ylab="Global Active Power")
 axis(1,at=1, labels="Thu")
